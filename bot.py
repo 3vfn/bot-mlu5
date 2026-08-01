@@ -1,3 +1,4 @@
+import os
 import random
 import hashlib
 import discord
@@ -48,4 +49,5 @@ async def gen_key(ctx, count: int = 1):
     except discord.Forbidden:
         await ctx.send(embed=embed)
 
-bot.run("YOUR_DISCORD_BOT_TOKEN")
+# تشغيل البوت باستخدام التوكن المعرف في Railway
+bot.run(os.getenv("DISCORD_TOKEN"))
