@@ -4,7 +4,7 @@ import hashlib
 import discord
 from discord.ext import commands
 
-# 🔑 المفتاح السري الموحد لتشفير الأكواد
+# المفتاح السري الموحد لتشفير الأكواد
 SECRET_SALT = "EARTH_SUPER_SECRET_2026"
 
 # ضع ID الرتبة المسموح لها بتوليد المفاتيح (أو اتركه 0 للسماح للجميع)
@@ -15,7 +15,6 @@ intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 # --- قاعدة بيانات الأكواد والبصمات ---
-# Structure: key -> {"used": True/False, "hwid": "XYZ...", "user_id": 123456}
 keys_db = {}
 
 def generate_earth_key() -> str:
@@ -34,10 +33,10 @@ def generate_earth_key() -> str:
 
 @bot.event
 async def on_ready():
-    print(f"==================================================")
+    print("==================================================")
     print(f"✅ تم تشغيل بوت Earth بنجاح باسم: {bot.user.name}")
-    print(f"🔒 نظام الحماية وتقييد HWID نشط ومفعل.")
-    print(f"==================================================")
+    print("🔒 نظام الحماية وتقييد HWID نشط ومفعل.")
+    print("==================================================")
     await bot.change_presence(activity=discord.Game(name="!key | Earth Spoofer System"))
 
 @bot.command(name="key", aliases=["genkey", "k"])
@@ -82,5 +81,6 @@ async def reset_hwid(ctx, key: str):
 
 # تشغيل البوت عبر التوكين
 TOKEN = os.getenv("DISCORD_TOKEN") or "ضع_توكين_البوت_هنا"
+
 if __name__ == "__main__":
     bot.run(TOKEN)
